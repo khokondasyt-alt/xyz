@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OnlineFunService</title>
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Welcome to <span>OnlineFunService</span></h1>
+      <p class="subtitle">User & Admin Login | Chat | Gift | Video Call (Mock)</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Auth panels -->
+    <section class="auth-grid">
+      <div class="card">
+        <h2>Register</h2>
+        <form id="registerForm">
+          <input name="name" placeholder="Full name" required />
+          <input name="mobile" placeholder="Mobile number" pattern="[0-9]{8,15}" required />
+          <input name="password" type="password" placeholder="Password" required />
+          <div class="radio-row">
+            <label><input type="radio" name="gender" value="male" checked /> Male (User)</label>
+            <label><input type="radio" name="gender" value="female" /> Female (Model)</label>
+          </div>
+          <button type="submit" class="btn">Register</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input name="mobile" placeholder="Mobile number" required />
+          <input name="password" type="password" placeholder="Password" required />
+          <button type="submit" class="btn">Login</button>
+        </form>
+
+        <hr/>
+
+        <h3>Admin Login</h3>
+        <form id="adminLoginForm">
+          <input name="adminUser" placeholder="Admin username" required />
+          <input name="adminPass" type="password" placeholder="Password" required />
+          <button type="submit" class="btn alt">Admin Login</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- App area (hidden until login) -->
+    <section id="appArea" class="hidden">
+      <div class="topbar">
+        <div id="welcomeText"></div>
+        <div>
+          <button id="logoutBtn" class="btn small">Logout</button>
+        </div>
+      </div>
+
+      <!-- USER DASHBOARD -->
+      <div id="userDashboard" class="dashboard hidden">
+        <h2>Available Models (Online)</h2>
+        <div id="modelsList" class="models-grid"></div>
+      </div>
+
+      <!-- MODEL DASHBOARD -->
+      <div id="modelDashboard" class="dashboard hidden">
+        <h2>Model Dashboard</h2>
+        <form id="modelProfileForm" class="card small">
+          <label>Upload Photo</label>
+          <input type="file" id="modelPhoto" accept="image/*" />
+          <label>Call charge (per minute)</label>
+          <input id="callCharge" type="number" min="1" value="10" />
+          <label>Available time slots (comma sep e.g. 10:00-12:00,18:00-22:00)</label>
+          <input id="timeSlots" placeholder="e.g. 10:00-12:00,18:00-22:00" />
+          <div>
+            <label><input id="onlineToggle" type="checkbox" /> Go Online</label>
+          </div>
+          <button id="saveProfile" class="btn">Save Profile</button>
+        </form>
+
+        <div class="card small">
+          <h3>Your Preview</h3>
+          <div id="modelPreview" class="model-preview"></div>
+        </div>
+      </div>
+
+      <!-- ADMIN DASHBOARD -->
+      <div id="adminDashboard" class="dashboard hidden">
+        <h2>Admin Panel</h2>
+        <div class="card">
+          <h3>Pending Models for Approval</h3>
+          <div id="pendingList"></div>
+        </div>
+
+        <div class="card">
+          <h3>All Models</h3>
+          <div id="allModelsList"></div>
+        </div>
+      </div>
+
+      <!-- Simple modal for call/chat -->
+      <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <button id="closeModal" class="close">✕</button>
+          <div id="modalBody"></div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2025 OnlineFunService. All rights reserved.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
